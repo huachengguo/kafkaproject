@@ -1,0 +1,12 @@
+eureka:                   #springcloud配置
+  client:
+    serviceUrl:
+      defaultZone: http://172.16.60.92:8861/eureka/,http://172.16.60.97:8661/eureka
+ribbon:                         #用于解决timeoutExeception
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+server:
+  port: 8868
+spring:
+  application:
+    name: kafka-client

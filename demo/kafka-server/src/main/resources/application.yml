@@ -1,0 +1,34 @@
+spring:
+  application:
+      name: kafka-server     #Springcloud 配置
+  profiles: kafkasever
+  kafka:
+    producer:
+      servers: 172.16.60.92:9995,172.16.60.92:9996
+      retries: 1
+      batch-size: 4096
+      buffer-memory: 50000
+      linger: 0
+    consumer:
+      servers: 172.16.60.92:9995,172.16.60.92:9996
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      group-id: kafka-consumer
+      max-poll-records: 100
+      topic_buy: tradechannel_buy
+      topic_sell: tradechannel_sell
+      topic_cancel: tradechannel_cancel
+      auto-commit-interval: 100
+      concurrency: 10
+      session-timeout: 15000
+
+eureka:                     #Springcloud 配置
+  client:
+    serviceUrl:
+      defaultZone: http://172.16.60.92:8861/eureka/
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+server:
+  port: ${server.port}
